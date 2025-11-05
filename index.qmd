@@ -1,0 +1,14 @@
+---
+title: "Building QA into Everyday Workflows with GitHub"
+subtitle: "Making quality part of how we work, not a chore."
+author: "[Rhian Davies](mailto:statrhian@gmail.com)"
+date: "2025-11-13"
+format: su-theme-revealjs
+---
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/YOUR_PRESENTATIONS_FOLDER
+
+
+
+
+
