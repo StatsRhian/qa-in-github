@@ -6,12 +6,14 @@
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-5d254f1e278c2921d96b26102a150bb1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-5d254f1e278c2921d96b26102a150bb1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="index_files/libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.9">
 
   <meta name="author" content="Rhian Davies">
   <meta name="dcterms.date" content="2025-11-13">
-  <title>Building QA into Everyday Workflows with GitHub</title>
+  <title>Ditch the Spreadsheets</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-cfe2eb6eb9a13ac5c8f88d4c8d41f99f.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-6f6a4de3a35e28b1d1d1983b769c410a.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -130,27 +132,296 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Building QA into Everyday Workflows with GitHub</h1>
-  <p class="subtitle">Making quality part of how we work, not a chore.</p>
+  <h1 class="title">Ditch the Spreadsheets</h1>
+  <p class="subtitle">Make QA work for you</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="mailto:statrhian@gmail.com">Rhian Davies</a> 
+<a href="mailto:statsrhian@gmail.com">Rhian Davies</a> 
 </div>
 </div>
 </div>
 
   <p class="date">2025-11-13</p>
 </section>
-<section class="slide level2">
+<section id="gateshead-flyover" class="slide level2" data-menu-title="It was fine, until it wasn't" data-background-image="flyover.png" data-background-size="55%" data-background-repeat="center">
+<h2></h2>
+<aside class="notes">
+<p>The Gateshead Flyover was inspected regularly, but one critical test hadn’t been done for 28 years.</p>
+<p>fig-alt=A huge flyover is held up by two concrete pillars. The image is taken from below. There are road signs underneath displaying the direction of travel. In the background are trees and parkland.”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="qa-is-often-neglected" class="slide level2">
+<h2>QA is often neglected</h2>
+<p>The National Audit Office (NAO) found<sup>1</sup> that common problems include:</p>
+<ul>
+<li>Poor data or unrealistic assumptions</li>
+<li>No uncertainty or sensitivity testing</li>
+<li>Weak documentation and governance</li>
+</ul>
+<aside class="notes">
+<p>Public organisations often rely heavily on models to make decisions. If a model has errors, unrealistic assumptions, or poor documentation, it can result in wasted resources, bad decisions and loss of public confidence. Our model influences hospital planning across the NHS, so it’s vital that people can trust it.</p>
+<p>NAO is the UK’s independent public&nbsp;spending&nbsp;watchdog</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><a href="https://www.nao.org.uk/wp-content/uploads/2016/03/11018-002-Framework-to-review-models_External_4DP.pdf">Framework to review models, page 3</a></p></li></ol></aside></section>
+<section id="what-is-qa" class="slide level2 inverse center" data-menu-title="What is QA?">
+<h2></h2>
+<p><span class="r-fit-text">Quality code ≠</span> <span class="r-fit-text">Quality assured code</span></p>
+<aside class="notes">
+<p>When I started my job at The Strategy Unit the first task I was given was can you build some QA processes for our model?</p>
+<p>My team develops and maintains a large, open source statistical model used to estimate how big hospitals of the future should be. The code was clean, well structured, documentated and tested. It was quality, reproducible code.</p>
+<p>Quality assurance, on the other hand, is about <em>building trust</em>. It ensures the right processes are followed, results are checked, and outputs are credible and interpretable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="useful-resources" class="slide level2">
+<h2>Useful resources 📚</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><a href="https://www.nao.org.uk/insights/framework-to-review-models/">Framework to review models</a>, NAO</li>
+<li><a href="https://www.gov.uk/guidance/the-aqua-book">AQuA book</a>, HM Treasury</li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="nao-risk.png" class="quarto-figure quarto-figure-center" alt="Chart illustrating types of QA based on business risk and model complexity. Lower risk uses version control, testing, QA guidelines; higher risk includes audits, reviews."></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="what-was-missing" class="slide level2">
+<h2>What was missing?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>QA Component</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Change log</td>
+<td><span class="fragment">✅ GitHub</span></td>
+</tr>
+<tr class="even">
+<td>Technical guide</td>
+<td><span class="fragment">✅ Code documentation</span></td>
+</tr>
+<tr class="odd">
+<td>User guide</td>
+<td><span class="fragment">✅ Quarto website</span></td>
+</tr>
+<tr class="even">
+<td>Roles/responsibilities</td>
+<td><span class="fragment">✅ Quarto website</span></td>
+</tr>
+<tr class="odd">
+<td>Assumptions log</td>
+<td><span class="fragment">✅ Quarto website</span></td>
+</tr>
+<tr class="even">
+<td>QA plan</td>
+<td><span class="fragment">❌</span></td>
+</tr>
+<tr class="odd">
+<td>QA log</td>
+<td><span class="fragment">❌</span></td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>To find the missing pieces, I turned to existing guidance across governement and auditing organisations:</p>
+<p>All our code was version-controlled, so we already had a change log. We maintained a <a href="https://connect.strategyunitwm.nhs.uk/nhp/project_information/">Quarto website</a> with user guidance, and wrote documentation alongside the code, which served as our technical guide.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="qa-plan" class="slide level2" data-menu-title="QA plan &amp; log">
+<h2></h2>
 
+<img data-src="inspection.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%" alt="A toilet inspection sign. Listing when inspections are planned, when they were completed, and by whom. This one only has two inspections due, 1999 and 2004! The inspection was apparently completed by 'Ye Ma' (A classic your mum joke.)"><aside class="notes">
+<ul>
+<li>QA plan, planned QA activities</li>
+<li>QA log,</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="meme-1" class="slide level2" data-menu-title="Excel? Nah">
+<h2></h2>
+
+<img data-src="yeah-nah-qa-before.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%" data-fig-height="100px" alt="Drake Nah-Yeah meme. Nah is a colourful spreadsheet, Yeah is a number of QA tasks in GitHub."><aside class="notes">
+<p>I scoured the internet looking for examples from other organisations. Almost everything I found was in spreadsheets.</p>
+<p>The most comprehensive example I came across was from the Department for Energy Security and Net Zero (DESNZ) in their <a href="https://www.gov.uk/government/publications/energy-security-and-net-zero-modelling-quality-assurance-qa-tools-and-guidance">Quality Assurance (QA) tools and guidance</a>.</p>
+<p>However, the templates were mostly designed for Excel-based models and still just big, colour-coded spreadsheets.</p>
+<p>My heart sank at the thought of having to manage QA with an ugly spreadsheet. There had to be a better way.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="meme-2" class="slide level2" data-menu-title="GitHub? Yeah">
+<h2></h2>
+
+<img data-src="yeah-nah-qa.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%" data-fig-height="100px" alt="Drake Nah-Yeah meme. Nah is a colourful spreadsheet, Yeah is a number of QA tasks in GitHub."><aside class="notes">
+<p>Our team was already using Git and GitHub for the model code and had just started experimenting with using <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub projects</a> for planning.</p>
+<p>So I thought: <em>what if we used a GitHub project for our QA plan and log too?</em></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="github-projects" class="slide level2" data-menu-title="Screenshot of GitHub project">
+<h2></h2>
+
+<img data-src="screenshot-github.png" style="width:120.0%" alt="Screenshot of the GitHub project board used to track QA for our model. Link in previous sentence." class="r-stretch quarto-figure-center"><p class="caption"><a href="https://github.com/orgs/The-Strategy-Unit/projects/6">github.com/orgs/The-Strategy-Unit/projects</a></p><aside class="notes">
+<p>I set up a <a href="https://github.com/orgs/The-Strategy-Unit/projects/6">new GitHub project</a> with two views:</p>
+<ul>
+<li>Open issues ➡️ QA plan</li>
+<li>Complete issues ➡️ QA log</li>
+</ul>
+<p>Then I browsed our repositories and added any quality assurance related issues to the board.</p>
+<p>Our model spans multiple repos, mostly public, but some private. The project board handles this seamlessly, showing public issues to everyone and private ones only to those with access.</p>
+<p>Now, whenever I’m working on something QA related, I simply add it to <a href="https://github.com/orgs/The-Strategy-Unit/projects/6">the project board</a>.</p>
+<p>When we prepare our monthly model releases, we use a GitHub issue template work through a release QA checklist.</p>
+<p>Every six months, I also do an internal QA review using another issue template.</p>
+<p>This works because <em>QA happens where the work happens</em>. Our developers already live in GitHub. Asking them to open a spreadsheet every time they make a model improvement just doesn’t fit how our team works. But asking them to add metadata to an issue they’re already working on, does.</p>
+<p>CHecklists help make it even simpler</p>
+<p>Instead of a static row in an abandoned spreadsheet, each QA item has its own discussion thread, links to relevant code or analysis, and version history.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="issue-labels" class="slide level2">
+<h2>Issue labels</h2>
+<ul>
+<li>📝 Documentation</li>
+<li>🗃️ Data &amp; Assumptions</li>
+<li>🧪 Verification</li>
+<li>❓Validation</li>
+<li>📁 Structure &amp; Clarity</li>
+</ul>
+<aside class="notes">
+<p>I also decided to add labels to the QA issues, based on the QA type.</p>
+<p><strong>Verification</strong> checks that the model solves the equations <em>correctly</em>. <strong>Validation</strong> is checks that it’s solving the <em>right equations</em>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="aqua-quote" class="slide level2 inverse center" data-menu-title="Aqua quote">
+<h2></h2>
+<p><span class="r-fit-text">“Creating and maintaining a</span> <span class="r-fit-text">strong culture of</span> <span class="r-fit-text">quality assurance is vital</span> <span class="r-fit-text">for ensuring analysis is robust and of a high quality.”</span></p>
+</section>
+<section id="final-thoughts" class="slide level2" data-menu-title="Closing thoughts">
+<h2>Make QA work for you</h2>
+<ul>
+<li><p>QA is about building trust, not ticking boxes 🛡️</p></li>
+<li><p>Embed QA where you work 💻</p></li>
+<li><p>Make QA a habit, not a chore 🔄</p></li>
+</ul>
+<aside class="notes">
+<p>There’s still plenty more to do, but moving our QA plan into GitHub has made QA part of daily coding, not an extra task at the end.</p>
+<p>If you’ve found other ways of managing QA (without the colour-coded spreadsheets!), I’d love to hear from you.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 </section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>view slides at <a href="https://the-strategy-unit.github.io/data_science/presentations/YOUR_PRESENTATIONS_FOLDER">the-strategy-unit.github.io/data_science/presentations</a></p>
+<p><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <i class="fa-brands fa-linkedin" aria-label="linkedin"></i> <a href="https://bsky.app/profile/statsrhian.bsky.social"><span class="citation" data-cites="statsRhian">@statsRhian</span></a> &nbsp; &nbsp; <i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> <a href="https://rhian.rbind.io">rhian.rbind.io</a></p>
 </div>
 </div></div>
 

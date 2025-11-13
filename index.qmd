@@ -1,14 +1,182 @@
 ---
-title: "Building QA into Everyday Workflows with GitHub"
-subtitle: "Making quality part of how we work, not a chore."
-author: "[Rhian Davies](mailto:statrhian@gmail.com)"
+title: "Ditch the Spreadsheets"
+subtitle: "Make QA work for you"
+author: "[Rhian Davies](mailto:statsrhian@gmail.com)"
 date: "2025-11-13"
 format: su-theme-revealjs
+footer: "{{< fa brands bluesky >}} {{< fa brands mastodon >}} {{< fa brands linkedin >}} [@statsRhian](https://bsky.app/profile/statsrhian.bsky.social) &nbsp; &nbsp; {{< fa laptop-code >}} [rhian.rbind.io](https://rhian.rbind.io)"
 ---
 
-[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/YOUR_PRESENTATIONS_FOLDER
+##  {#gateshead-flyover data-menu-title="It was fine, until it wasn't" background-image="flyover.png" background-size="55%" background-repeat="center"}
+
+:::{.notes}
+The Gateshead Flyover was inspected regularly, but one critical test hadn't been done for 28 years.
+
+fig-alt=A huge flyover is held up by two concrete pillars. The image is taken from below. There are road signs underneath displaying the direction of travel. In the background are trees and parkland."
+:::
+
+## QA is often neglected
+
+The National Audit Office (NAO) found^[[Framework to review models, page 3](https://www.nao.org.uk/wp-content/uploads/2016/03/11018-002-Framework-to-review-models_External_4DP.pdf)] that common problems include:
+
+- Poor data or unrealistic assumptions
+- No uncertainty or sensitivity testing
+- Weak documentation and governance
+
+:::{.notes}
+
+Public organisations often rely heavily on models to make decisions. If a model has errors, unrealistic assumptions, or poor documentation, it can result in wasted resources, bad decisions and loss of public confidence. Our model influences hospital planning across the NHS, so it's vital that people can trust it.
+
+NAO is the UK’s independent public spending watchdog
+
+:::
+
+## {#what-is-qa data-menu-title="What is QA?" .inverse .center}
+
+[Quality code ≠]{.r-fit-text}
+[Quality assured code]{.r-fit-text}
+
+:::{.notes}
+
+When I started my job at The Strategy Unit the first task I was given was can you build some QA processes for our model?
+
+My team develops and maintains a large, open source statistical model used to estimate how big hospitals of the future should be. The code was clean, well structured, documentated and tested. It was quality, reproducible code.
+
+Quality assurance, on the other hand, is about _building trust_. It ensures the right processes are followed, results are checked, and outputs are credible and interpretable.
+:::
 
 
+## Useful resources 📚
+
+:::: {.columns}
+::: {.column}
+
+- [Framework to review models](https://www.nao.org.uk/insights/framework-to-review-models/), NAO
+- [AQuA book](https://www.gov.uk/guidance/the-aqua-book), HM Treasury
+
+:::
+::: {.column}
+![](nao-risk.png){fig-align="center" fig-alt="Chart illustrating types of QA based on business risk and model complexity. Lower risk uses version control, testing, QA guidelines; higher risk includes audits, reviews."}
+
+:::
+:::: 
 
 
+## What was missing?
 
+| QA Component           |                                    |
+| ---------------------- | ---------------------------------- | 
+| Change log             | [✅ GitHub]{.fragment}             |
+| Technical guide        | [✅ Code documentation]{.fragment}             |
+| User guide             | [✅ Quarto website]{.fragment}     |
+| Roles/responsibilities | [✅ Quarto website]{.fragment}     |
+| Assumptions log        | [✅ Quarto website ]{.fragment}    |
+| QA plan                | [❌]{.fragment}                    |
+| QA log                 | [❌]{.fragment}                    |
+
+:::{.notes}
+
+To find the missing pieces, I turned to existing guidance across governement and auditing organisations:
+
+All our code was version-controlled, so we already had a change log.  We maintained a [Quarto website](https://connect.strategyunitwm.nhs.uk/nhp/project_information/) with user guidance, and wrote documentation alongside the code, which served as our technical guide.
+:::
+
+##  {#qa-plan data-menu-title="QA plan & log"}
+
+![](inspection.jpg){width="40%" fig-align="center" fig-alt="A toilet inspection sign. Listing when inspections are planned, when they were completed, and by whom. This one only has two inspections due, 1999 and 2004! The inspection was apparently completed by 'Ye Ma' (A classic your mum joke.)" }
+
+:::{.notes}
+- QA plan, planned QA activities
+- QA log, 
+:::
+
+##  {#meme-1 data-menu-title="Excel? Nah"}
+
+![](yeah-nah-qa-before.png){width="40%" fig-align="center" fig-alt="Drake Nah-Yeah meme. Nah is a colourful spreadsheet, Yeah is a number of QA tasks in GitHub." fig-height="100px"}
+
+:::{.notes}
+
+I scoured the internet looking for examples from other organisations.  Almost everything I found was in spreadsheets.
+
+The most comprehensive example I came across was from the Department for Energy Security and Net Zero (DESNZ) in their [Quality Assurance (QA) tools and guidance](https://www.gov.uk/government/publications/energy-security-and-net-zero-modelling-quality-assurance-qa-tools-and-guidance).  
+
+However, the templates were mostly designed for Excel-based models and still just big, colour-coded spreadsheets.
+
+My heart sank at the thought of having to manage QA with an ugly spreadsheet. There had to be a better way.
+:::
+
+##  {#meme-2 data-menu-title="GitHub? Yeah"}
+
+![](yeah-nah-qa.png){width="40%" fig-align="center" fig-alt="Drake Nah-Yeah meme. Nah is a colourful spreadsheet, Yeah is a number of QA tasks in GitHub." fig-height="100px"}
+
+:::{.notes}
+Our team was already using Git and GitHub for the model code and had just started experimenting with using [GitHub projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) for planning.  
+
+So I thought: *what if we used a GitHub project for our QA plan and log too?*
+:::
+
+##  {#github-projects data-menu-title="Screenshot of GitHub project"}
+
+![[github.com/orgs/The-Strategy-Unit/projects](https://github.com/orgs/The-Strategy-Unit/projects/6)](screenshot-github.png){width="120%" fig-align="center" fig-alt="Screenshot of the GitHub project board used to track QA for our model. Link in previous sentence."}
+ 
+:::{.notes}
+
+I set up a [new GitHub project](https://github.com/orgs/The-Strategy-Unit/projects/6) with two views:
+
+- Open issues ➡️ QA plan
+- Complete issues ➡️ QA log
+
+Then I browsed our repositories and added any quality assurance related issues to the board.
+
+Our model spans multiple repos, mostly public, but some private. The project board handles this seamlessly, showing public issues to everyone and private ones only to those with access.
+
+Now, whenever I'm working on something QA related, I simply add it to [the project board](https://github.com/orgs/The-Strategy-Unit/projects/6).
+
+When we prepare our monthly model releases, we use a GitHub issue template work through a release QA checklist.
+
+Every six months, I also do an internal QA review using another issue template.
+
+This works because _QA happens where the work happens_.
+Our developers already live in GitHub. Asking them to open a spreadsheet every time they make a model improvement just doesn’t fit how our team works. But asking them to add metadata to an issue they're already working on, does. 
+
+CHecklists help make it even simpler
+
+Instead of a static row in an abandoned spreadsheet, each QA item has its own discussion thread, links to relevant code or analysis, and version history.
+:::
+
+## Issue labels
+
+- 📝 Documentation
+- 🗃️ Data & Assumptions
+- 🧪 Verification
+- ❓Validation
+- 📁 Structure & Clarity
+
+:::{.notes}
+
+I also decided to add labels to the QA issues, based on the QA type. 
+
+**Verification** checks that the model solves the equations _correctly_.  **Validation** is checks that it's solving the _right equations_.
+:::
+
+
+## {#aqua-quote data-menu-title="Aqua quote" .inverse .center}
+
+["Creating and maintaining a]{.r-fit-text}
+[strong culture of]{.r-fit-text}
+[quality assurance is vital]{.r-fit-text}
+[for ensuring analysis is robust and of a high quality."]{.r-fit-text}
+
+## Make QA work for you {#final-thoughts data-menu-title="Closing thoughts"}
+
+- QA is about building trust, not ticking boxes 🛡️
+
+- Embed QA where you work 💻
+
+- Make QA a habit, not a chore 🔄
+
+:::{.notes}
+There's still plenty more to do, but moving our QA plan into GitHub has made QA part of daily coding, not an extra task at the end.
+
+If you've found other ways of managing QA (without the colour-coded spreadsheets!), I'd love to hear from you.
+:::
