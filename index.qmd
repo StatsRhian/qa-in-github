@@ -15,6 +15,7 @@ The Gateshead Flyover was inspected regularly, but one critical test hadn't been
 fig-alt=A huge flyover is held up by two concrete pillars. The image is taken from below. There are road signs underneath displaying the direction of travel. In the background are trees and parkland."
 :::
 
+<!---
 ## QA is often neglected
 
 The National Audit Office (NAO) found^[[Framework to review models, page 3](https://www.nao.org.uk/wp-content/uploads/2016/03/11018-002-Framework-to-review-models_External_4DP.pdf)] that common problems include:
@@ -30,6 +31,8 @@ Public organisations often rely heavily on models to make decisions. If a model 
 NAO is the UK’s independent public spending watchdog
 
 :::
+
+--->
 
 ## {#what-is-qa data-menu-title="What is QA?" .inverse .center}
 
